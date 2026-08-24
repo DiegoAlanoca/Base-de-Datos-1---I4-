@@ -2,9 +2,9 @@
 
 **Materia:** Base de Datos 1
 **Actividad:** Captura de requisitos para sistema de información real
-**Entrevistador:** [Tu nombre]
+**Entrevistador:** Diego Ronald Alanoca Avircata
 **Entrevistado:** Alexis Acosta — Propietario, taller de reparación electrónica *Sigma Byte*
-**Modalidad:** Presencial / Llamada
+**Modalidad:** Presencial
 **Duración aproximada:** 8 min
 
 ---
@@ -69,7 +69,7 @@ El objetivo de la entrevista es identificar la necesidad real de un usuario para
 
 ---
 
-## Notas del entrevistador
+## Notas
 
 - Necesidad prioritaria identificada: **control de garantías de clientes por reparación**.
 - Necesidades secundarias: control de inventario de herramientas/piezas (hoy manejado en Excel, actualización manual) y, más adelante, una página web como canal de acceso.
