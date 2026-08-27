@@ -1,77 +1,90 @@
-# Entrevista — Captura de requisitos
+# Narración de Requisitos — Taller de Reparación Electrónica "Sigma Byte"
 
-**Materia:** Base de Datos 1
-**Actividad:** Captura de requisitos para sistema de información real
-**Entrevistador:** Diego Ronald Alanoca Avircata
-**Entrevistado:** Alexis Acosta — Propietario, taller de reparación electrónica *Sigma Byte*
-**Modalidad:** Presencial
-**Duración aproximada:** 8 min
+Documento elaborado siguiendo la guía "De requisitos narrativos a Diagrama Entidad-Relación (DER)", a partir de la entrevista realizada a Alexis Acosta.
 
 ---
 
-## Contexto
+## Título del caso
 
-El objetivo de la entrevista es identificar la necesidad real de un usuario para, a partir de ella, construir el modelo conceptual de una base de datos. Alexis Acosta administra un taller de reparación electrónica de reciente apertura (computadoras y consolas) y actualmente no cuenta con ningún sistema digital para gestionar su operación.
-
----
-
-## Transcripción
-
-**D:** Hola Alexis, ¿qué tal?
-
-**A:** Bien, gracias.
-
-**D:** ¿Te parece si comenzamos con la entrevista?
-
-**A:** Sí, dale.
-
-**D:** Perfecto. Vamos entendiendo cómo solucionar tu problema. ¿Qué problemas tienes actualmente con tus clientes o con tu sistema de trabajo?
-
-**A:** Actualmente no tengo ningún sistema para mi taller, porque recién lo estoy montando. Mi mayor problema es llevar el control de las reparaciones que realizo y saber qué tiempo de garantía tiene cada una.
-
-**D:** O sea que ahora mismo no manejas ningún sistema de control, ¿verdad?
-
-**A:** No, ninguno.
-
-**D:** ¿Y para tus herramientas y repuestos? ¿Están manejando algún tipo de inventario? Porque me imagino que algo de control debes tener.
-
-**A:** Tengo una hoja de Excel donde anoto todos los activos y piezas, pero tengo que actualizarla manualmente cada vez, y a veces se me pasa.
-
-**D:** Entendido. Entonces, resumiendo, te falta tanto el sistema de inventario como el de control de clientes.
-
-**A:** Sí, así es.
-
-**D:** Bueno, hablemos un poco de cómo te gustaría tener ese control y por qué medio te gustaría acceder a él. Por ejemplo, si preferirías revisar las garantías o el inventario a través de una página web.
-
-**D:** ¿Tienes página web ahora mismo?
-
-**A:** Eh... no, tampoco tengo.
-
-**D:** Está bien, no hay problema, entonces podemos construir todo desde cero.
-
-**D:** ¿Te parece bien que el control del sistema se pueda hacer también desde el celular?
-
-**A:** Sí, sería lo mejor, pero no sé cuánto costaría algo así.
-
-**D:** Como te comentaba antes, este es un proyecto universitario, así que el único costo que tendrías serían tus gastos operativos, como el alojamiento de la web o alguna suscripción a la plataforma donde esté tu inventario, nada más.
-
-**A:** Ah, ok, me parece bien.
-
-**D:** Última pregunta: de estos tres puntos —página web, control de inventario y control de garantías de clientes— ¿cuál dirías que es el más urgente para ti ahora mismo?
-
-**A:** El control de garantías de clientes, sin duda. No puedo arriesgarme a tener otro problema por no saber quién es mi cliente o si su reparación todavía está en garantía o no.
-
-**D:** Perfecto, con eso ya tengo una buena base. Voy a empezar a armar el diagrama y te lo paso para que le des un vistazo durante esta semana.
-
-**A:** Me parece bien, gracias.
-
-*(Fin de la entrevista)*
+Control de clientes, equipos y garantías — Taller de reparación electrónica "Sigma Byte"
 
 ---
 
-## Notas
+## Narración del cliente
 
-- Necesidad prioritaria identificada: **control de garantías de clientes por reparación**.
-- Necesidades secundarias: control de inventario de herramientas/piezas (hoy manejado en Excel, actualización manual) y, más adelante, una página web como canal de acceso.
-- El sistema debería ser accesible también desde celular.
-- Restricción principal: es un proyecto universitario, por lo que Alexis solo asumiría costos operativos (hosting, suscripciones), no de desarrollo.
+Soy Alexis Acosta, dueño del taller de reparación electrónica Sigma Byte, un negocio de reciente apertura dedicado a reparar computadoras de escritorio, laptops, consolas y otros equipos electrónicos. Actualmente no cuento con ningún sistema digital para gestionar mi operación: llevo el inventario de herramientas y piezas en una hoja de Excel que tengo que actualizar manualmente cada vez, y no tengo pagina web.
+
+Mi mayor problema es el control de las reparaciones que realizo y saber que tiempo de garantía tiene cada una. Cuando un cliente trae un equipo, necesito registrar sus datos (nombre completo, celular, y su C.I. si es que lo tiene a mano, porque a veces no lo trae), y también los datos del equipo: cada equipo es único y se identifica con su número de serie (S/N), que además me sirve para imprimir una etiqueta rápida y pegarla al equipo mientras está en el taller. Un mismo cliente me puede traer varios equipos distintos, pero cada equipo es siempre de un solo dueño.
+
+Cada vez que recibo un equipo para reparar, se genera un servicio: ahí anoto la fecha en que ingresó, una descripción del problema, en que estado está la reparación, y el tiempo de garantía que doy una vez entregado. Un equipo puede tener varios servicios si vuelve mas adelante por otra falla.
+
+Por ahora me gustaría que se pueda revisar también desde el celular. Como es un proyecto universitario, mis gastos serían solo los operativos (como el hosting o alguna suscripción), no el desarrollo. Lo mas urgente para mi es el control de garantías de clientes, el inventario y la pagina web pueden esperar.
+
+---
+
+## Suposiciones
+
+- El C.I. del cliente puede quedar vacío, no todos lo traen a la mano.
+- La etiqueta de impresión rápida no es un dato aparte, es el mismo S/N impreso.
+- La categoría del equipo (computadora de escritorio, laptop, consola, otro) es solo un dato más del equipo, no se le puso más vueltas.
+- El inventario y la página web no entran en este modelo todavía porque Alexis dijo que no son lo más urgente.
+
+---
+
+## Entidades iniciales
+
+- Cliente
+- Equipo
+- Servicio
+
+---
+
+## Reglas y restricciones extra
+
+- El S/N del equipo no se puede repetir.
+- El C.I. puede ir vacío.
+- Cada equipo es de un solo cliente.
+- La categoría del equipo solo puede ser una de estas: computadora de escritorio, laptop, consola, otro equipo electrónico.
+
+---
+
+## Entidades y atributos
+
+- **Cliente**
+  - Nombre completo
+  - C.I. (puede ir vacío)
+  - Celular
+
+- **Equipo**
+  - S/N (número de serie, sirve también como etiqueta impresa)
+  - Categoría
+
+- **Servicio**
+  - Fecha de ingreso
+  - Descripción del problema
+  - Estado
+  - Tiempo de garantía
+
+---
+
+## Relaciones y cardinalidades
+
+- **Cliente 1 — N Equipo**: un cliente puede tener uno o varios equipos, cada equipo es de un solo cliente.
+- **Equipo 1 — N Servicio**: un equipo puede tener uno o varios servicios, cada servicio es de un solo equipo.
+
+---
+
+## Restricciones de negocio
+
+- No se puede registrar un servicio si no está ligado a un equipo.
+- No se puede registrar un equipo si no está ligado a un cliente.
+- El tiempo de garantía se anota cuando se entrega el equipo reparado.
+
+---
+
+## Representación para DER
+
+- Entidades: rectángulos para Cliente, Equipo, Servicio.
+- Relaciones: rombos "Posee" (Cliente–Equipo) y "Genera" (Equipo–Servicio).
+- Cardinalidades: Cliente (1) — (N) Equipo; Equipo (1) — (N) Servicio.
+  
